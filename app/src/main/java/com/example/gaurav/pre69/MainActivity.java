@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    int count=0;
+    long initialTime = 0 , endTime = 0;
     EditText edittext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,19 +22,22 @@ public class MainActivity extends AppCompatActivity {
         edittext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkTheNumberOfTap();
+                if(initialTime == 0) {
+                    initialTime = System.currentTimeMillis();
+                } else {
+                    endTime = System.currentTimeMillis();
+                    if(endTime - initialTime <=500) {
+                        changeKeyboardStatus();
+                    }
+                    initialTime = endTime;
+                }
             }
         });
     }
-    private void checkTheNumberOfTap(){
-            count++;
-            if(count==2){
+    private void changeKeyboardStatus() {
                 edittext.setFocusable(true);
                 InputMethodManager imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-                count=0;
-            }
-            /* TODO: Another feature to be implemented is to make the keyboard appear only at the time of two QUICK double clicks and not just two clicks made at any intervals*/
     }
 }
 
