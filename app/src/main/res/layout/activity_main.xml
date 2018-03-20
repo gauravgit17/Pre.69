@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.gaurav.pre69.MainActivity"
     android:background="#373b43">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/black">
+
+        <ImageView
+            android:id="@+id/mic_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mic_white_24dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+
 
     <EditText
         android:id="@+id/main_input"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:cursorVisible="true"
         android:focusable="false"
         android:hint="Put that code here, baby"
         android:textColor="#f2ebeb"
         android:gravity="top"/>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
